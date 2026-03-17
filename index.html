@@ -325,33 +325,39 @@
 (function () {
 
   const data = [
-    { type:'perf', num:1,  school:'Orting MS',            cat:'MS',      min:600, warmup:'9:50 AM',  perform:'10:00 AM', clinic:{ loc:'Cafeteria', start:'10:10 AM', end:'10:25 AM' } },
-    { type:'perf', num:2,  school:'First Creek MS',        cat:'MS',      min:610, warmup:'10:00 AM', perform:'10:10 AM', clinic:{ loc:'Band Room',  start:'10:20 AM', end:'10:35 AM' } },
-    { type:'perf', num:3,  school:'Hilltop Heritage MS',   cat:'MS',      min:620, warmup:'10:10 AM', perform:'10:20 AM', clinic:{ loc:'Cafeteria', start:'10:30 AM', end:'10:45 AM' } },
-    { type:'perf', num:4,  school:'Sequoyah MS',           cat:'MS',      min:630, warmup:'10:20 AM', perform:'10:30 AM', clinic:{ loc:'Band Room',  start:'10:40 AM', end:'10:55 AM' } },
+    // ── MS block ──
+    { type:'perf', num:1,  school:'Orting MS',            cat:'MS',       min:600, warmup:'9:50 AM',  perform:'10:00 AM', clinic:{ loc:'Cafeteria', start:'10:10 AM', end:'10:25 AM' } },
+    { type:'perf', num:2,  school:'First Creek MS',        cat:'MS',       min:610, warmup:'10:00 AM', perform:'10:10 AM', clinic:{ loc:'Band Room',  start:'10:20 AM', end:'10:35 AM' } },
+    { type:'perf', num:3,  school:'Hilltop Heritage MS',   cat:'MS',       min:620, warmup:'10:10 AM', perform:'10:20 AM', clinic:{ loc:'Cafeteria', start:'10:30 AM', end:'10:45 AM' } },
+    { type:'perf', num:4,  school:'Sequoyah MS',           cat:'MS',       min:630, warmup:'10:20 AM', perform:'10:30 AM', clinic:{ loc:'Band Room',  start:'10:40 AM', end:'10:55 AM' } },
+    // ── HS block 1 ──
     { type:'perf', num:5,  school:'Cedar Park Soarin\u2019 Sound Drumline', cat:'HS\u2011A',  min:645, warmup:'10:30 AM', perform:'10:45 AM', clinic:{ loc:'Cafeteria', start:'11:00 AM', end:'11:25 AM' } },
     { type:'perf', num:6,  school:'West Seattle HS',       cat:'HS\u2011AA', min:660, warmup:'10:45 AM', perform:'11:00 AM', clinic:{ loc:'Band Room',  start:'11:15 AM', end:'11:40 AM' } },
     { type:'perf', num:7,  school:'Life Christian',        cat:'HS\u2011A',  min:675, warmup:'11:00 AM', perform:'11:15 AM', clinic:{ loc:'Cafeteria', start:'11:30 AM', end:'11:55 AM' } },
     { type:'perf', num:8,  school:'Clover Park HS',        cat:'HS\u2011A',  min:690, warmup:'11:15 AM', perform:'11:30 AM', clinic:{ loc:'Band Room',  start:'11:45 AM', end:'12:10 PM' } },
     { type:'perf', num:9,  school:'Mount Rainier HS',      cat:'HS\u2011A',  min:705, warmup:'11:30 AM', perform:'11:45 AM', clinic:{ loc:'Cafeteria', start:'12:00 PM', end:'12:25 PM' } },
-    { type:'ex',           school:'Lincoln JV',            cat:'EX',      min:720, warmup:'11:45 AM', perform:'12:00 PM', clinic:null },
-    { type:'special', label:'\u2736 \u2002 Intermission \u2002 \u2736', min:735, time:'12:15 PM' },
-    { type:'perf', num:10, school:'Newport HS: Scarlet Knights Percussion', cat:'HS\u2011A', min:780, warmup:'12:45 PM', perform:'1:00 PM',  clinic:{ loc:'Band Room',  start:'1:15 PM',  end:'1:40 PM'  } },
-    { type:'perf', num:11, school:'Curtis HS',             cat:'HS\u2011A',  min:795, warmup:'1:00 PM',  perform:'1:15 PM',  clinic:{ loc:'Cafeteria', start:'1:30 PM',  end:'1:55 PM'  } },
-    { type:'perf', num:12, school:'Cleveland HS',          cat:'HS\u2011A',  min:810, warmup:'1:15 PM',  perform:'1:30 PM',  clinic:{ loc:'Band Room',  start:'1:45 PM',  end:'2:10 PM'  } },
-    { type:'perf', num:13, school:'Decatur HS',            cat:'HS\u2011A',  min:825, warmup:'1:30 PM',  perform:'1:45 PM',  clinic:{ loc:'Cafeteria', start:'2:00 PM',  end:'2:25 PM'  } },
-    { type:'perf', num:14, school:'Kennedy Catholic',      cat:'HS\u2011AA', min:840, warmup:'1:45 PM',  perform:'2:00 PM',  clinic:{ loc:'Band Room',  start:'2:15 PM',  end:'2:40 PM'  } },
-    { type:'perf', num:15, school:'Washington HS',         cat:'HS\u2011AA', min:855, warmup:'2:00 PM',  perform:'2:15 PM',  clinic:{ loc:'Cafeteria', start:'2:30 PM',  end:'2:55 PM'  } },
-    { type:'perf', num:16, school:'Orting HS',             cat:'HS\u2011AA', min:870, warmup:'2:15 PM',  perform:'2:30 PM',  clinic:{ loc:'Band Room',  start:'2:45 PM',  end:'3:10 PM'  } },
-    { type:'perf', num:17, school:'Garfield HS',           cat:'HS\u2011AA', min:885, warmup:'2:30 PM',  perform:'2:45 PM',  clinic:{ loc:'Cafeteria', start:'3:00 PM',  end:'3:25 PM'  } },
-    { type:'perf', num:18, school:'Roosevelt HS',          cat:'HS\u2011AA', min:900, warmup:'2:45 PM',  perform:'3:00 PM',  clinic:{ loc:'Band Room',  start:'3:15 PM',  end:'3:40 PM'  } },
-    { type:'special', label:'\u2736 \u2002 Intermission \u2002 \u2736', min:915, time:'3:15 PM' },
-    { type:'ex', school:'Seismic Sound', cat:'EX', min:930, warmup:'3:15 PM', perform:'3:30 PM', clinic:null },
-    { type:'ex', school:'UW Huskies',    cat:'EX', min:940, warmup:'3:25 PM', perform:'3:40 PM', clinic:null },
-    { type:'ex', school:'Lincoln HS',    cat:'EX', min:950, warmup:'3:35 PM', perform:'3:50 PM', clinic:null },
-    { type:'ex', school:'Blue Thunder',  cat:'EX', min:960, warmup:'3:45 PM', perform:'4:00 PM', clinic:null },
-    { type:'special', label:'\uD83C\uDFC6 \u2002 Awards Ceremony \u2002 \uD83C\uDFC6', min:975, time:'4:15 PM' },
-    { type:'finished', min:985 }
+    // ── Exhibition / Intermission ──
+    { type:'ex',           school:'Lincoln JV',            cat:'EX',       min:720, warmup:'11:45 AM', perform:'12:00 PM', clinic:null },
+    { type:'special', label:'\u2736 \u2002 Intermission \u2002 \u2736', min:730, time:'12:10 PM' },
+    // ── HS block 2 ──
+    { type:'perf', num:10, school:'Newport HS: Scarlet Knights Percussion', cat:'HS\u2011A', min:760, warmup:'12:25 PM', perform:'12:40 PM', clinic:{ loc:'Band Room',  start:'12:55 PM', end:'1:20 PM'  } },
+    { type:'perf', num:11, school:'Curtis HS',             cat:'HS\u2011A',  min:775, warmup:'12:40 PM', perform:'12:55 PM', clinic:{ loc:'Cafeteria', start:'1:10 PM',  end:'1:35 PM'  } },
+    { type:'perf', num:12, school:'Cleveland HS',          cat:'HS\u2011A',  min:790, warmup:'12:55 PM', perform:'1:10 PM',  clinic:{ loc:'Band Room',  start:'1:25 PM',  end:'1:50 PM'  } },
+    { type:'perf', num:13, school:'Decatur HS',            cat:'HS\u2011A',  min:805, warmup:'1:10 PM',  perform:'1:25 PM',  clinic:{ loc:'Cafeteria', start:'1:40 PM',  end:'2:05 PM'  } },
+    { type:'perf', num:14, school:'Kennedy Catholic',      cat:'HS\u2011AA', min:820, warmup:'1:25 PM',  perform:'1:40 PM',  clinic:{ loc:'Band Room',  start:'1:55 PM',  end:'2:20 PM'  } },
+    { type:'perf', num:15, school:'Washington HS',         cat:'HS\u2011AA', min:835, warmup:'1:40 PM',  perform:'1:55 PM',  clinic:{ loc:'Cafeteria', start:'2:10 PM',  end:'2:35 PM'  } },
+    { type:'perf', num:16, school:'Orting HS',             cat:'HS\u2011AA', min:850, warmup:'1:55 PM',  perform:'2:10 PM',  clinic:{ loc:'Band Room',  start:'2:25 PM',  end:'2:50 PM'  } },
+    { type:'perf', num:17, school:'Garfield HS',           cat:'HS\u2011AA', min:865, warmup:'2:10 PM',  perform:'2:25 PM',  clinic:{ loc:'Cafeteria', start:'2:40 PM',  end:'3:05 PM'  } },
+    { type:'perf', num:18, school:'Roosevelt HS',          cat:'HS\u2011AA', min:880, warmup:'2:25 PM',  perform:'2:40 PM',  clinic:{ loc:'Band Room',  start:'2:55 PM',  end:'3:20 PM'  } },
+    // ── Intermission / Exhibition ──
+    { type:'special', label:'\u2736 \u2002 Intermission \u2002 \u2736', min:895, time:'2:55 PM' },
+    { type:'ex', school:'Seismic Sound', cat:'EX', min:915, warmup:'3:00 PM', perform:'3:15 PM', clinic:null },
+    { type:'ex', school:'UW Huskies',    cat:'EX', min:925, warmup:'3:15 PM', perform:'3:25 PM', clinic:null },
+    { type:'ex', school:'Lincoln HS',    cat:'EX', min:935, warmup:'3:25 PM', perform:'3:35 PM', clinic:null },
+    { type:'ex', school:'Blue Thunder',  cat:'EX', min:945, warmup:'3:35 PM', perform:'3:45 PM', clinic:null },
+    // ── Awards / Wrap ──
+    { type:'special', label:'\uD83C\uDFC6 \u2002 Awards Ceremony \u2002 \uD83C\uDFC6', min:960, time:'4:00 PM' },
+    { type:'finished', min:970 }
   ];
 
   const tbody    = document.getElementById('schedBody');
@@ -438,7 +444,7 @@
       const tr = document.createElement('tr');
       tr.className = 'finished';
       tr.dataset.min = d.min;
-      tr.innerHTML = `<td colspan="5">&mdash; That&rsquo;s a Wrap &mdash; &nbsp; 4:25 PM</td>`;
+      tr.innerHTML = `<td colspan="5">&mdash; That&rsquo;s a Wrap &mdash; &nbsp; 4:10 PM</td>`;
       tbody.appendChild(tr);
       timedRows.push({ tr, min: d.min });
     }
